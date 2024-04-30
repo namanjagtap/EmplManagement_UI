@@ -1,0 +1,24 @@
+.detailSection{
+    margin: 10vw;
+
+}
+
+.crudBar{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    /* margin: 1vw; */
+    background-color: rgb(209, 231, 221);
+    border: 1px solid rgb(173, 173, 173);
+    /* padding: 0.1rem; */
+}
+
+.crudBar button{
+    margin: 5px;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #020626;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 5px;
+}
