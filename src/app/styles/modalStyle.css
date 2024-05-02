@@ -1,0 +1,13 @@
+form div, Button{
+    margin: 10px;
+}
+
+button{
+    margin: 5px;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #020626;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 5px;
+}

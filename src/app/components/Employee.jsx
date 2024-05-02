@@ -4,26 +4,25 @@ import { useState, useEffect } from "react";
 import "../styles/employeeStyle.css"
 import "bootstrap/dist/css/bootstrap.css"
 import "bootstrap/dist/js/bootstrap.bundle"
-import EmployeeModal from './EmployeeModal';
+import EmployeePostModal from './EmployeePostModal';
+import EmployeePutModal from './EmployeePutModal';
 
 export default function employee() {
     const [emplDetails, setEmplDetails] = useState([]);
-    const [dataFetched, setDataFetched] = useState(false);
-    const [modalShow, setModalShow] = useState(false);
+    const [showPostModal, setShowPostModal] = useState(false);
+    const [showPutModal, setShowPutModal] = useState(false);
+    const [showData, setShowData] = useState(false);
 
     useEffect(() => {
         fetchEmplDetail();
-    }, [])
-    console.log(dataFetched);
+    }, [showPostModal, showPutModal])
+
+
     const fetchEmplDetail = () => {
         fetch('https://localhost:7032/api/EmployeeAPI')
         .then(respone => respone.json())
-        .then(data => {
-            setEmplDetails(data)
-            setDataFetched(true)
-        })
+        .then(data => setEmplDetails(data))
     }
-    console.log(dataFetched);
     
     const handleDelete = () => {
         const id = prompt("Enter Employee ID to delete the record");
@@ -37,7 +36,7 @@ export default function employee() {
                     fetchEmplDetail();
                 }
                 else{
-                    alert("Failed to delet data");
+                    alert("Please enter a valid employee ID");
                 }
             })
             .catch(error => console.log("Error deleting employee: " + error));
@@ -48,17 +47,17 @@ export default function employee() {
     <div className='detailSection'>
         <button
             type='button'
-            onClick={fetchEmplDetail}
+            onClick={() => {fetchEmplDetail, setShowData(prevState => prevState = !prevState)}}
             className='btn btn-primary'
-                style={{ backgroundColor: '#020626', color: 'white', border: 'none', marginBottom: '20px'}}
+            style={{ backgroundColor: '#020626', color: 'white', border: 'none', marginBottom: '20px'}}
         >Check Details</button>
-        <section>
-            <div className='crudBar'>
-                <button onClick={() => setModalShow(true)}>Add</button>
-                <button>Update</button>
-                <button onClick={handleDelete}>Delete</button>
-            </div>
-            {dataFetched &&
+        { showData &&
+            <section>
+                <div className='crudBar'>
+                    <button onClick={() => setShowPostModal(true)}>Add</button>
+                    <button onClick={() => setShowPutModal(true)}>Update</button>
+                    <button onClick={handleDelete}>Delete</button>
+                </div>
                 <table className='table table-bordered'>
                     <thead className='table-success'>
                         <tr>
@@ -95,11 +94,15 @@ export default function employee() {
                         })}
                     </tbody>
                 </table>
-            }
-        </section>
-        <EmployeeModal
-            show={modalShow}
-            onHide={() => setModalShow(false)}
+            </section>
+        }
+        <EmployeePostModal
+            show={showPostModal}
+            onHide={() => setShowPostModal(false)}
+        />
+        <EmployeePutModal
+            show={showPutModal}
+            onHide={() => setShowPutModal(false)}
         />
     </div>
   )
