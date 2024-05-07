@@ -111,37 +111,43 @@ export default function EmployeePostModal(props) {
           </Modal.Header>
           <Modal.Body>
             <form onSubmit={handleSubmit}>
-                <div class="form-floating">
+            <div class="form-floating">
                     <input name='EmplName' type="text" class="form-control" id="floatingInput" placeholder="John Dire" onChange={handleChange} required />
                     <label htmlFor="floatingInput">Employee Name</label>
-                </div>
-                <div class="form-floating">
-                    <input name='DOB' type="date" class="form-control" id="dob" placeholder="1990-05-15" onChange={handleChange} required />
-                    <label htmlFor="dob">DOB</label>
-                </div>
-                <div class="form-floating">
-                    <input name='DOJ' type="date" class="form-control" id="doj" placeholder="2015-08-20" onChange={handleChange} required />
-                    <label htmlFor="doj">DOJ</label>
-                </div>
-                <div class="form-floating">
-                    <input name='BloodGroup' type="text" class="form-control" id="bloodGroup" placeholder="A+" onChange={handleChange} required />
-                    <label htmlFor="bloodGroup">Blood Group</label>
                 </div>
                 <div class="form-floating">
                     <input name='Phone' type="number" class="form-control" id="phone" placeholder="1234567890" onChange={handleChange} required />
                     <label htmlFor="phone">Phone</label>
                 </div>
-                <div class="form-floating">
-                    <input name='ExperienceYears' type="number" class="form-control" id="experienceYears" placeholder="6" onChange={handleChange} required />
-                    <label htmlFor="experienceYears">Experience Years</label>
+                <div className='row justify-content-between'>
+                  <div class="form-floating col">
+                      <input name='DOB' type="date" class="form-control" id="dob" placeholder="1990-05-15" onChange={handleChange} required />
+                      <label className='ms-2' htmlFor="dob">DOB</label>
+                  </div>
+                  <div class="form-floating col">
+                      <input name='DOJ' type="date" class="form-control" id="doj" placeholder="2015-08-20" onChange={handleChange} required />
+                      <label className='ms-2' htmlFor="doj">DOJ</label>
+                  </div>
                 </div>
-                <div class="form-floating">
-                    <input name='CareerStartDate' type="date" class="form-control" id="careerStartDate" placeholder="2010-07-01" onChange={handleChange} required />
-                    <label htmlFor="careerStartDate">Career Start Date</label>
+                <div className='row justify-content-between'>
+                  <div class="form-floating col">
+                      <input name='BloodGroup' type="text" class="form-control" id="bloodGroup" placeholder="A+" onChange={handleChange} required />
+                      <label className='ms-2' htmlFor="bloodGroup">Blood Group</label>
+                  </div>
+                  <div class="form-floating col">
+                      <input name='ExperienceYears' type="number" class="form-control" id="experienceYears" placeholder="6" onChange={handleChange} required />
+                      <label className='ms-2' htmlFor="experienceYears">Experience Years</label>
+                  </div>
                 </div>
-                <div class="form-floating">
-                    <input name='InterviewedDate' type="date" class="form-control" id="interviewedDate" placeholder="2015-08-10" onChange={handleChange} required />
-                    <label htmlFor="interviewedDate">Interviewed Date</label>
+                <div className='row justify-content-between'>
+                  <div class="form-floating col">
+                      <input name='CareerStartDate' type="date" class="form-control" id="careerStartDate" placeholder="2010-07-01" onChange={handleChange} required />
+                      <label className='ms-2' htmlFor="careerStartDate">Career Start Date</label>
+                  </div>
+                  <div class="form-floating col">
+                      <input name='InterviewedDate' type="date" class="form-control" id="interviewedDate" placeholder="2015-08-10" onChange={handleChange} required />
+                      <label className='ms-2' htmlFor="interviewedDate">Interviewed Date</label>
+                  </div>
                 </div>
                 <div class="form-floating">
                     <input name='PreviousCompany' type="text" class="form-control" id="previousCompany" placeholder="ABC Corp" onChange={handleChange} required />

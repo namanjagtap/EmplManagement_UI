@@ -17,7 +17,8 @@ export default function EmployeePutModal(props) {
     CareerStartDate: '',
     InterviewedDate: '',
     PreviousCompany: '',
-    CTC: ''
+    CTC: '',
+    WorkMode: ''
   });
 
   const fetchData = () => {
@@ -34,7 +35,8 @@ export default function EmployeePutModal(props) {
         CareerStartDate: data.careerStartDate,
         InterviewedDate: data.interviewedDate,
         PreviousCompany: data.previousCompany,
-        CTC: data.ctc
+        CTC: data.ctc,
+        WorkMode: data.workMode
     }));
   }
 
@@ -66,7 +68,8 @@ export default function EmployeePutModal(props) {
           CareerStartDate: '',
           InterviewedDate: '',
           PreviousCompany: '',
-          CTC: ''
+          CTC: '',
+          WorkMode: ''
         });
       }else{
         alert("Failed to insert data");
@@ -74,6 +77,7 @@ export default function EmployeePutModal(props) {
     })
   }
 
+  console.log(FormData);
   return (
         <Modal
           {...props}
@@ -97,36 +101,42 @@ export default function EmployeePutModal(props) {
                     <button onClick={fetchData}>Fetch</button>
                 </div>
                 <div class="form-floating">
-                    <input name='EmplName' type="text" value={formState.EmplName} value={formState.EmplName} class="form-control" id="floatingInput" placeholder="John Dire" onChange={handleChange} required />
+                    <input name='EmplName' type="text" value={formState.EmplName} class="form-control" id="floatingInput" placeholder="John Dire" onChange={handleChange} required />
                     <label htmlFor="floatingInput">Employee Name</label>
-                </div>
-                <div class="form-floating">
-                    <input name='DOB' type="date" value={formState.DOB} class="form-control" id="dob" placeholder="1990-05-15" onChange={handleChange} required />
-                    <label htmlFor="dob">DOB</label>
-                </div>
-                <div class="form-floating">
-                    <input name='DOJ' type="date" value={formState.DOJ} class="form-control" id="doj" placeholder="2015-08-20" onChange={handleChange} required />
-                    <label htmlFor="doj">DOJ</label>
-                </div>
-                <div class="form-floating">
-                    <input name='BloodGroup' type="text" value={formState.BloodGroup} class="form-control" id="bloodGroup" placeholder="A+" onChange={handleChange} required />
-                    <label htmlFor="bloodGroup">Blood Group</label>
                 </div>
                 <div class="form-floating">
                     <input name='Phone' type="number" value={formState.Phone} class="form-control" id="phone" placeholder="1234567890" onChange={handleChange} required />
                     <label htmlFor="phone">Phone</label>
                 </div>
-                <div class="form-floating">
-                    <input name='ExperienceYears' type="number" value={formState.ExperienceYears} class="form-control" id="experienceYears" placeholder="6" onChange={handleChange} required />
-                    <label htmlFor="experienceYears">Experience Years</label>
+                <div className='row justify-content-between'>
+                  <div class="form-floating col">
+                      <input name='DOB' type="date" value={formState.DOB} class="form-control" id="dob" placeholder="1990-05-15" onChange={handleChange} required />
+                      <label className='ms-2' htmlFor="dob">DOB</label>
+                  </div>
+                  <div class="form-floating col">
+                      <input name='DOJ' type="date" value={formState.DOJ} class="form-control" id="doj" placeholder="2015-08-20" onChange={handleChange} required />
+                      <label className='ms-2' htmlFor="doj">DOJ</label>
+                  </div>
                 </div>
-                <div class="form-floating">
-                    <input name='CareerStartDate' type="date" value={formState.CareerStartDate} class="form-control" id="careerStartDate" placeholder="2010-07-01" onChange={handleChange} required />
-                    <label htmlFor="careerStartDate">Career Start Date</label>
+                <div className='row justify-content-between'>
+                  <div class="form-floating col">
+                      <input name='BloodGroup' type="text" value={formState.BloodGroup} class="form-control" id="bloodGroup" placeholder="A+" onChange={handleChange} required />
+                      <label className='ms-2' htmlFor="bloodGroup">Blood Group</label>
+                  </div>
+                  <div class="form-floating col">
+                      <input name='ExperienceYears' type="number" value={formState.ExperienceYears} class="form-control" id="experienceYears" placeholder="6" onChange={handleChange} required />
+                      <label className='ms-2' htmlFor="experienceYears">Experience Years</label>
+                  </div>
                 </div>
-                <div class="form-floating">
-                    <input name='InterviewedDate' type="date" value={formState.InterviewedDate} class="form-control" id="interviewedDate" placeholder="2015-08-10" onChange={handleChange} required />
-                    <label htmlFor="interviewedDate">Interviewed Date</label>
+                <div className='row justify-content-between'>
+                  <div class="form-floating col">
+                      <input name='CareerStartDate' type="date" value={formState.CareerStartDate} class="form-control" id="careerStartDate" placeholder="2010-07-01" onChange={handleChange} required />
+                      <label className='ms-2' htmlFor="careerStartDate">Career Start Date</label>
+                  </div>
+                  <div class="form-floating col">
+                      <input name='InterviewedDate' type="date" value={formState.InterviewedDate} class="form-control" id="interviewedDate" placeholder="2015-08-10" onChange={handleChange} required />
+                      <label className='ms-2' htmlFor="interviewedDate">Interviewed Date</label>
+                  </div>
                 </div>
                 <div class="form-floating">
                     <input name='PreviousCompany' type="text" value={formState.PreviousCompany} class="form-control" id="previousCompany" placeholder="ABC Corp" onChange={handleChange} required />
@@ -135,6 +145,15 @@ export default function EmployeePutModal(props) {
                 <div class="form-floating">
                     <input name='CTC' type="number" value={formState.CTC} class="form-control" id="ctc" placeholder="7000000" onChange={handleChange} required />
                     <label htmlFor="ctc">CTC</label>
+                </div>
+                <div class="form-floating">
+                  <select name='WorkMode' value={formState.WorkMode} class="form-control" id='workMode' onChange={handleChange} placeholder="Remote" required >
+                    <option value="" disabled selected></option>
+                    <option value="Remote">Remote</option>
+                    <option value="Hybrid">Hybrid</option>
+                    <option value="Office">Office</option>
+                  </select>
+                  <label htmlFor='workMode'>Work Mode</label>
                 </div>
               <button type='submit'>Submit</button>
               <button onClick={props.onHide}>Close</button>

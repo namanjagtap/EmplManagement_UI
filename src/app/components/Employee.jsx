@@ -6,12 +6,14 @@ import "bootstrap/dist/css/bootstrap.css"
 import "bootstrap/dist/js/bootstrap.bundle"
 import EmployeePostModal from './EmployeePostModal';
 import EmployeePutModal from './EmployeePutModal';
+import { useAuth0 } from '@auth0/auth0-react';
 
 export default function employee() {
     const [emplDetails, setEmplDetails] = useState([]);
     const [showPostModal, setShowPostModal] = useState(false);
     const [showPutModal, setShowPutModal] = useState(false);
     const [showData, setShowData] = useState(false);
+    const { isAuthenticated } = useAuth0();
 
     useEffect(() => {
         fetchEmplDetail();
@@ -42,9 +44,9 @@ export default function employee() {
             .catch(error => console.log("Error deleting employee: " + error));
         }
     }
-  
+
   return (
-    <div className='detailSection'>
+    isAuthenticated && <div className='detailSection'>
         <button
             type='button'
             onClick={() => {fetchEmplDetail, setShowData(prevState => prevState = !prevState)}}
@@ -72,6 +74,7 @@ export default function employee() {
                             <th>Interviewed Date</th>
                             <th>Previous Company</th>
                             <th>CTC</th>
+                            <th>Work Mode</th>
                         </tr>
                     </thead>
                     <tbody className='table-info'>
@@ -89,6 +92,7 @@ export default function employee() {
                                     <td>{detail.interviewedDate}</td>
                                     <td>{detail.previousCompany}</td>
                                     <td>{detail.ctc}</td>
+                                    <td>{detail.workMode}</td>
                                 </tr>
                             )
                         })}
