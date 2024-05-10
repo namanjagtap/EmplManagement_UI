@@ -38,29 +38,6 @@ const Profile = () => {
         getUserMetadata();
       }, [getAccessTokenSilently, user?.sub]);
 
-    // useEffect(() => {
-    //     const fetchAccessToken = async () => {
-    //         const options = {
-    //             clientID: 'je2rGZ9NR6yrDy6o0vStpzcQi63b6Yim',
-    //             domain: 'dev-2yve6ieic7sp55cm.us.auth0.com',
-    //             responseType: 'token id_token',
-    //             audience: 'YOUR_API_IDENTIFIER',
-    //             redirectUri: 'http://localhost:3000/',
-    //             scope: 'openid profile email'
-    //           };
-    //       if (isAuthenticated) {
-    //         try {
-    //           const accessToken = await getAccessTokenSilently();
-    //           console.log('Access Token:', accessToken);
-    //         } catch (error) {
-    //           console.error('Error fetching access token:', error);
-    //         }
-    //       }
-    //     };
-    
-    //     fetchAccessToken();
-    //   }, [getAccessTokenSilently, isAuthenticated]);
-
     return (
         isAuthenticated && (
             <article>

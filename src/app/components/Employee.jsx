@@ -31,10 +31,6 @@ export default function employee() {
             .then(data => setUserDetails(data));
         }
     }, [user, isAuthenticated])
-    console.log(user)
-    // console.log(userDetails.app_metadata.authorization.roles[0]);
-
-    
 
     useEffect(() => {
         fetchEmplDetail();
@@ -65,7 +61,6 @@ export default function employee() {
             .catch(error => console.log("Error deleting employee: " + error));
         }
     }
-    console.log(userDetails)
 
   return (
     isAuthenticated && <div className='detailSection'>
