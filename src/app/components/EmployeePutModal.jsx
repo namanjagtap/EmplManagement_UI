@@ -77,7 +77,6 @@ export default function EmployeePutModal(props) {
     })
   }
 
-  console.log(FormData);
   return (
         <Modal
           {...props}

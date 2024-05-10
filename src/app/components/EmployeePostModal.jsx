@@ -26,9 +26,9 @@ export default function EmployeePostModal(props) {
     setFormState({...formState, [e.target.name]: e.target.value})
   }
 
-  useEffect(() => {
-    console.log(formState)
-  }, [formState])
+  // useEffect(() => {
+  //   console.log(formState)
+  // }, [formState])
 
   //Employee ID Creation Logic
   const generateEmplID = (work, doj, count) => {
@@ -47,7 +47,6 @@ export default function EmployeePostModal(props) {
       return emplID;
   }
 
-  console.log(formState);
   const handleSubmit = (e) => {
     e.preventDefault();
 
